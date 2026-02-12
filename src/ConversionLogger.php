@@ -4,12 +4,12 @@ class ConversionLogger
 {
     private $logFile;
 
-    public function __construct($logFile)
+    public function __construct(string $logFile)
     {
         $this->logFile = $logFile;
     }
 
-    public function log($amount, $from, $convertedAmount, $to) {
+    public function log(string $amount, string $from, string $convertedAmount, string $to): void {
         $log = $amount. " " . $from. "," . $convertedAmount. " " .$to . PHP_EOL;
         file_put_contents($this->logFile, $log, FILE_APPEND);
     }
