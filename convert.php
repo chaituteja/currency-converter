@@ -1,6 +1,7 @@
 <?php
+require 'src/CurrencyConverter.php';
 
-$conversionRates = [
+$currencyRates = [
     'AUD' => 1.0,
     'USD' => 1.5,
     'GBP' => 1.7,
@@ -12,4 +13,7 @@ $amount = $argv[1];
 $from = $argv[2];
 $to = $argv[3];
 
-echo $amount . " " . $from . " " . $to;
+$currencyConverter = new CurrencyConverter($currencyRates);
+$convertedAmount = $currencyConverter->convertAmount($amount, $from, $to);
+
+echo $amount . " " . $from . $convertedAmount. " " . $to;
