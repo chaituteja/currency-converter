@@ -15,6 +15,6 @@ class CurrencyConverter
         } else {
             $result = $amount / $this->currencyRates[$to];
         }
-        return $result;
+        return round($result , 2);
     }
 }
