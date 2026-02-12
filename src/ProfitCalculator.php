@@ -3,8 +3,12 @@
 class ProfitCalculator 
 {
 
-    public function calculateProfit($logFile) 
+    public function calculateProfit(string $logFile): float
     {
+        if (!file_exists($logFile)) {
+            throw new RuntimeException("File not found.");
+        }
+
         $totalProfit = 0;
         $logs = file($logFile);
 
