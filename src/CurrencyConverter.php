@@ -8,4 +8,13 @@ class CurrencyConverter
     {
         $this->currencyRates = $currencyRates;
     }
+
+    public function convertAmount($amount, $from, $to) {
+        if($to === 'AUD') {
+            $result = $amount * $this->currencyRates[$from];
+        } else {
+            $result = $amount / $this->currencyRates[$to];
+        }
+        return $result;
+    }
 }
