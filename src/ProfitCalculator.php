@@ -10,9 +10,16 @@ class ProfitCalculator
 
         foreach($logs as $log) {
             list($initialData, $convertedData ) = explode(',', $log);
-            list($convertedAmount, $convertedCurrency) = explode(' ', $convertedData);
+            list($initialAmount, $initialCurrency) = explode(' ', trim($initialData));
+            list($convertedAmount, $convertedCurrency) = explode(' ', trim($convertedData));
 
-            $profit = $convertedAmount * 0.15;
+            if ($convertedCurrency !== 'AUD') {
+                $profit = $initialAmount * 0.15;
+                
+            } else {
+                $profit = $convertedAmount * 0.15;
+            }
+
             $totalProfit = $totalProfit + $profit;
         }
         return $totalProfit;

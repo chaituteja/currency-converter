@@ -6,4 +6,4 @@ $profitCalculator = new ProfitCalculator();
 
 $totalProfit = $profitCalculator->calculateProfit('log.txt');
 
-echo $totalProfit;
+echo "Total Profit : " . $totalProfit . " AUD";
