@@ -5,6 +5,7 @@ Simple currency converter
 ## Notes/Assumptions
 
 1. Conversions must be in AUD(to or from).
+2. A log file will be created after running `convert` command
 
 ## Available Scripts
 
