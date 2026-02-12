@@ -1,5 +1,6 @@
 <?php
 require 'src/CurrencyConverter.php';
+require 'src/ConversionLogger.php';
 
 $currencyRates = [
     'AUD' => 1.0,
@@ -14,9 +15,9 @@ $from = $argv[2];
 $to = $argv[3];
 
 $currencyConverter = new CurrencyConverter($currencyRates);
-$convertedAmount = $currencyConverter->convertAmount($amount, $from, $to);
+$conversionLogger = new ConversionLogger('log.txt');
 
-$log = $amount. " " . $from. "," . $convertedAmount. " " .$to . PHP_EOL;
-file_put_contents("test.txt", $log, FILE_APPEND);
+$convertedAmount = $currencyConverter->convertAmount($amount, $from, $to);
+$conversionLogger->log($amount, $from, $convertedAmount, $to);
 
 echo $amount . " " . $from . " ". $convertedAmount. " " . $to;
