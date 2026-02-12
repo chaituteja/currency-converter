@@ -4,4 +4,6 @@ require 'src/ProfitCalculator.php';
 
 $profitCalculator = new ProfitCalculator();
 
-$profitCalculator->calculateProfit('log.txt');
+$totalProfit = $profitCalculator->calculateProfit('log.txt');
+
+echo $totalProfit;

@@ -9,12 +9,12 @@ class ProfitCalculator
         $logs = file($logFile);
 
         foreach($logs as $log) {
-            $array = explode(',', $log);
-            $initialData = $array[0];
-            $convertedData = $array[1];
+            list($initialData, $convertedData ) = explode(',', $log);
+            list($convertedAmount, $convertedCurrency) = explode(' ', $convertedData);
 
-            echo $initialData. "  ". $convertedData;
-
+            $profit = $convertedAmount * 0.15;
+            $totalProfit = $totalProfit + $profit;
         }
+        return $totalProfit;
     }
 }
