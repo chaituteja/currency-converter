@@ -14,6 +14,11 @@ $amount = $argv[1];
 $from = $argv[2];
 $to = $argv[3];
 
+if ($from !== 'AUD' && $to !== 'AUD') {
+    echo "Conversions must involve AUD, please try again";
+    return;
+}
+
 $currencyConverter = new CurrencyConverter($currencyRates);
 $conversionLogger = new ConversionLogger('log.txt');
 
