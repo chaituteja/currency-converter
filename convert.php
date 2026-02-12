@@ -17,6 +17,6 @@ $currencyConverter = new CurrencyConverter($currencyRates);
 $convertedAmount = $currencyConverter->convertAmount($amount, $from, $to);
 
 $log = $amount. " " . $from. "," . $convertedAmount. " " .$to . PHP_EOL;
-file_put_contents("test.txt", $log);
+file_put_contents("test.txt", $log, FILE_APPEND);
 
-echo $amount . " " . $from . $convertedAmount. " " . $to;
+echo $amount . " " . $from . " ". $convertedAmount. " " . $to;
