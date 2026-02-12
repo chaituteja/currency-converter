@@ -11,12 +11,25 @@ $currencyRates = [
 ];
 
 $amount = $argv[1];
-$from = $argv[2];
-$to = $argv[3];
+$from = strtoupper($argv[2]);
+$to = strtoupper($argv[3]);
 
+// Validate amount
+if (!is_numeric($amount)) {
+    echo "Amount must be a valid number, please try again.";
+    exit();
+}
+
+// Enforce AUD rule
 if ($from !== 'AUD' && $to !== 'AUD') {
-    echo "Conversions must involve AUD, please try again";
-    return;
+    echo "Conversions must involve AUD, ";
+    exit();
+}
+
+// Validate Currency codes 
+if (!isset($currencyRates[$from]) || !isset($currencyRates[$to])) {
+    echo "Entered currency code(s) are not supported, please try again.";
+    exit();
 }
 
 $currencyConverter = new CurrencyConverter($currencyRates);
